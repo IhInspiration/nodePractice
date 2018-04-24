@@ -1,0 +1,9 @@
+extends ../layout
+
+block header
+    link(rel="stylesheet", href="/stylesheets/index.css")
+
+block content
+    div(id="react-app")!=bodyContent
+    div(id="testNodemon")=testNodemon
+    script(src="//q.qunarzz.com/myapp-local/dist/scripts/index.js")

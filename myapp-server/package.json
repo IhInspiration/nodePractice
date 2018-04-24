@@ -1,0 +1,32 @@
+{
+  "name": "myapp-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "devStart": "babel-node ./bin/dev --presets env,react",
+    "compile": "cp -a app/ dist/ && babel app/ --out-dir dist/ --retain-lines --source-maps",
+    "nodemonStart": "nodemon ./bin/dev --exec babel-node",
+    "start": "forever start ./bin/start.js",
+    "stop": "forever stop ./bin/start.js",
+    "restart": "forever restart ./bin/start.js",
+    "test": "mocha --require babel-register"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.17.3"
+  }
+}
