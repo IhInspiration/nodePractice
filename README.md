@@ -4,6 +4,8 @@
 
 * webpack
 * webpack-dev-server
+* mobx
+* mobx-react
 
 ## myapp-server
 

@@ -13,6 +13,15 @@ class TodoList extends Component {
         this.props.store.addTodo(prompt('Enter a new todo:','coffee plz'));
     }
 
+    changeList = () => {
+        const store = observableTodoStore;
+        store.todos.push({task: "item_01", completed: false});
+        store.todos.push({task: "item_02", completed: false});
+        store.todos.push({task: "item_03", completed: false});
+        store.todos[0].completed = !store.todos[0].completed;
+        store.todos[1].task = "Random todo " + Math.random();
+    }
+
     render() {
         const store = this.props.store;
         return (
@@ -28,6 +37,7 @@ class TodoList extends Component {
                 </ul>
                 {store.pendingRequests > 0 ? <marquee>Loading..</marquee> : null}
                 <button onClick={this.onNewTodo}>New Todo</button>
+                <button onClick={this.changeList}>Change</button>
             </div>
         );
     }
