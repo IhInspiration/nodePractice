@@ -3,6 +3,10 @@
         "env",
         "react"
     ],
+    "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties"
+    ],
     "sourceMaps": true,
     "retainLines": true
   }
