@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>todo-list</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1>Todo List</h1>
+        <ul id="todoList"></ul>
+        <input type="text" name="item" id="input"/>
+        <button id="add">Add</button>
+        <button id="del">Delete</button>
+        <script src="/common/jquery-3.3.1.js"></script>
+        <script>
+            function getList() {
+                $.ajax({
+                    url: '/getList',
+                    type: 'GET',
+                    success: function(res) {
+                        if(res.ret) {
+                            var tempHtml = '';
+
+                            res.data.forEach(function(v) {
+                                tempHtml += '<li>' + v + '</li>';
+                            });
+
+                            $("#todoList").html(tempHtml);
+                        }
+                    }
+                })
+            }
+
+            $("#add").click(function() {
+                var itemContent = $("#input").val();
+                $.ajax({
+                    url: '/add',
+                    type: 'POST',
+                    data: {
+                        itemContent: itemContent
+                    },
+                    success: function(res) {
+                        if(res.ret){
+                            console.log(res.msg || '操作成功');
+                        } else {
+                            console.log(res.msg || '操作失败');
+                        }
+                        getList();
+                    },
+                    fail: function(err) {
+                        console.log(err);
+                    }
+                })
+            });
+
+            $("#del").click(function() {
+                var itemContent = $("#input").val();
+                $.ajax({
+                    url: '/del',
+                    type: 'GET',
+                    data: {
+                        itemContent: itemContent
+                    },
+                    success: function(res) {
+                        if(res.ret){
+                            console.log(res.msg || '操作成功');
+                        } else {
+                            console.log(res.msg || '操作失败');
+                        }
+                        getList();
+                    },
+                    fail: function(err) {
+                        console.log(err);
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

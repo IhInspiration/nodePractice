@@ -21,6 +21,11 @@
 ### node-example-01
 
 * socket.io
+* mime
+
+## todo-list
+
+* mime
 
 Continue...
 

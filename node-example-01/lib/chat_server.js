@@ -95,6 +95,7 @@ function handelRoomJoining(socket) {
 function handleClientDisconnection(socket) {
     socket.on('disconnect', function(){
         var nameIndex = namesUsed.indexOf(nickNames[socket.id]);
+        console.log(nickNames[socket.id] + ' has left ' + currentRoom[socket.id]);
         delete namesUsed[nameIndex];
         delete nickNames[socket.id];
     });
