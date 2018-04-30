@@ -26,6 +26,8 @@
 ## todo-list
 
 * mime
+* mysql(npm)
+* database use version@5.6.40
 
 Continue...
 
