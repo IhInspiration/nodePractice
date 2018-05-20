@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
 global.isClient = false;//标识 非浏览器环境
 
@@ -17,7 +18,12 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('jackwang'));
+app.use(session({
+  secret: 'jackwang',
+  resave: true,
+  saveUninitialized: false,
+}))
 // 托管静态文件
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -1,0 +1,8 @@
+extends ../layout
+
+block header
+    link(rel="stylesheet", href="/stylesheets/index.css")
+
+block content
+    div(id="react-app")!=bodyContent
+    script(src="//jackwang.com/nodePractice/myapp-local/dist/users.js?t=" + time)

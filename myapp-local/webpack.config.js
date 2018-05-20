@@ -1,7 +1,8 @@
 var path = require('path');
 module.exports = {
     entry: {
-        index: './app/scripts/index/index.js'
+        index: './app/scripts/index/index.js',
+        users: './app/scripts/users/index.js'
     },
     output: {
         filename: '[name].js',
@@ -11,7 +12,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: 'babel-loader?presets[]=react,presets[]=env,plugins[]=transform-decorators-legacy,plugins[]=transform-class-properties'
+                use: 'babel-loader?presets[]=react,presets[]=env,presets[]=stage-0,plugins[]=transform-decorators-legacy,plugins[]=transform-class-properties'
             }
         ]
     },
