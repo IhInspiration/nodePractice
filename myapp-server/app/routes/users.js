@@ -4,7 +4,7 @@ import Users from '../scripts/users/index';
 import React from 'react';
 import ReactDom from 'react-dom/server';
 import md5 from 'md5';
-import db from '../dao/connect';
+import db from '../base/connect';
 
 const router = express.Router();
 
